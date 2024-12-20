@@ -1,4 +1,5 @@
 # MoodListener - 心情记录应用 📱
+<img src="https://github.com/user-attachments/assets/84012e67-26c2-4cb3-9f37-c7d56f778703" width="128" height="128" alt="moodicon" style="display: block; margin: 20px auto;">
 
 `v1.0.0`
 
