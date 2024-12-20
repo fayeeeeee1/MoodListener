@@ -1,0 +1,38 @@
+1|private fun setupBottomNavigation() {
+2|    findViewById<BottomNavigationView>(R.id.bottomNavigation).apply {
+3|        selectedItemId = R.id.navigation_home
+4|        
+5|        setOnItemSelectedListener { item ->
+6|            when (item.itemId) {
+7|                R.id.navigation_home -> true
+8|                R.id.navigation_history -> {
+9|                    startActivity(
+10|                        Intent(this@MainActivity, HistoryActivity::class.java)
+11|                    )
+12|                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+13|                    false
+14|                }
+15|                R.id.navigation_settings -> {
+16|                    startActivityForResult(
+17|                        Intent(this@MainActivity, SettingsActivity::class.java),
+18|                        SETTINGS_REQUEST_CODE
+19|                    )
+20|                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+21|                    false
+22|                }
+23|                else -> false
+24|            }
+25|        }
+26|    }
+27|}
+28|
+29|override fun recreate() {
+30|    finish()
+31|    overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+32|    startActivity(intent)
+33|}
+34|
+35|override fun onBackPressed() {
+36|    super.onBackPressed()
+37|    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+38|} 

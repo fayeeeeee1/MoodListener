@@ -1,0 +1,55 @@
+1|class MainActivity : AppCompatActivity() {
+2|    // ... 其他代码 ...
+3|
+4|    override fun onCreate(savedInstanceState: Bundle?) {
+5|        super.onCreate(savedInstanceState)
+6|        
+7|        // 先初始化数据库并设置主题
+8|        db = MoodDatabase(this)
+9|        currentTheme = db.getTheme()
+10|        setTheme(getThemeResourceId(currentTheme))
+11|        
+12|        setContentView(R.layout.activity_main)
+13|        setSupportActionBar(findViewById(R.id.toolbar))
+14|        supportActionBar?.title = "记录心情"
+15|        
+16|        initializeAdapter()
+17|        setupViews()
+18|        
+19|        // 移除自动检查通知的代码
+20|        
+21|        if (intent.getBooleanExtra("EDIT_MODE", false)) {
+22|            editingEntryId = intent.getLongExtra("ENTRY_ID", -1)
+23|            setupEditMode()
+24|        }
+25|
+26|        setupBottomNavigation()
+27|    }
+28|
+29|    // 移除 onResume 中的通知检查代码
+30|    override fun onResume() {
+31|        super.onResume()
+32|        val newTheme = db.getTheme()
+33|        if (newTheme != currentTheme) {
+34|            currentTheme = newTheme
+35|            recreate()
+36|        }
+37|    }
+38|
+39|    // 只在设置页面修改通知设置后处理通知
+40|    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+41|        super.onActivityResult(requestCode, resultCode, data)
+42|        if (requestCode == SETTINGS_REQUEST_CODE && resultCode == RESULT_OK) {
+43|            val notificationChanged = data?.getBooleanExtra("NOTIFICATION_CHANGED", false) ?: false
+44|            if (notificationChanged) {
+45|                val settings = db.getUserSettings()
+46|                if (settings.enabled) {
+47|                    setupNotificationWork(settings)
+48|                } else {
+49|                    // 如果用户关闭了通知，取消所有已设置的通知
+50|                    WorkManager.getInstance(this).cancelUniqueWork("mood_notification")
+51|                }
+52|            }
+53|        }
+54|    }
+55|} 

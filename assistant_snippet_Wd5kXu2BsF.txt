@@ -1,0 +1,13 @@
+1|// slide_in_left.xml
+2|<?xml version="1.0" encoding="utf-8"?>
+3|<set xmlns:android="http://schemas.android.com/apk/res/android"
+4|    android:duration="300">
+5|    <translate
+6|        android:fromXDelta="-100%p"
+7|        android:toXDelta="0"
+8|        android:interpolator="@android:anim/decelerate_interpolator"/>
+9|    <alpha
+10|        android:fromAlpha="0.5"
+11|        android:toAlpha="1.0"
+12|        android:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
+13|</set> 

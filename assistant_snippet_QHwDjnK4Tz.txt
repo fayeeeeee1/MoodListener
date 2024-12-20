@@ -1,0 +1,13 @@
+1|// slide_out_right.xml
+2|<?xml version="1.0" encoding="utf-8"?>
+3|<set xmlns:android="http://schemas.android.com/apk/res/android"
+4|    android:duration="300">
+5|    <translate
+6|        android:fromXDelta="0"
+7|        android:toXDelta="100%p"
+8|        android:interpolator="@android:anim/accelerate_interpolator"/>
+9|    <alpha
+10|        android:fromAlpha="1.0"
+11|        android:toAlpha="0.5"
+12|        android:interpolator="@android:anim/accelerate_interpolator"/>
+13|</set> 

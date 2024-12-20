@@ -1,0 +1,29 @@
+1|// 保存按钮点击事件
+2|findViewById<Button>(R.id.saveButton).setOnClickListener {
+3|    val oldSettings = db.getUserSettings()
+4|    val newSettings = UserSettings(
+5|        startTime = "${startTimePicker.hour}:${startTimePicker.minute}",
+6|        endTime = "${endTimePicker.hour}:${endTimePicker.minute}",
+7|        interval = intervalSpinner.selectedItem.toString().replace("分钟", "").toInt(),
+8|        enabled = enabledSwitch.isChecked,
+9|        notificationText = notificationTextEdit.text.toString()
+10|    )
+11|
+12|    // 检查通知设置是否发生变化
+13|    val notificationChanged = oldSettings.enabled != newSettings.enabled ||
+14|            oldSettings.startTime != newSettings.startTime ||
+15|            oldSettings.endTime != newSettings.endTime ||
+16|            oldSettings.interval != newSettings.interval ||
+17|            oldSettings.notificationText != newSettings.notificationText
+18|
+19|    db.updateUserSettings(newSettings)
+20|
+21|    // 设置返回结果
+22|    val resultIntent = Intent().apply {
+23|        putExtra("NOTIFICATION_CHANGED", notificationChanged)
+24|    }
+25|    setResult(RESULT_OK, resultIntent)
+26|    
+27|    Toast.makeText(this, "设置已保存", Toast.LENGTH_SHORT).show()
+28|    finish()
+29|} 

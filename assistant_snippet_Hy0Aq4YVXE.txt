@@ -1,0 +1,107 @@
+1|class MainActivity : AppCompatActivity() {
+2|    // ... 其他代码 ...
+3|
+4|    override fun onCreate(savedInstanceState: Bundle?) {
+5|        super.onCreate(savedInstanceState)
+6|        
+7|        // 先初始化数据库并设置主题
+8|        db = MoodDatabase(this)
+9|        currentTheme = db.getTheme()
+10|        setTheme(getThemeResourceId(currentTheme))
+11|        
+12|        setContentView(R.layout.activity_main)
+13|        setSupportActionBar(findViewById(R.id.toolbar))
+14|        supportActionBar?.title = "记录心情"
+15|        
+16|        initializeAdapter()
+17|        setupViews()
+18|        
+19|        // 只在应用首次启动时检查通知
+20|        if (!isFinishing && intent.action != null && intent.action == Intent.ACTION_MAIN) {
+21|            checkAndScheduleNotification()
+22|        }
+23|        
+24|        // ... 其他代码 ...
+25|    }
+26|
+27|    override fun onResume() {
+28|        super.onResume()
+29|        // 只检查主题变化
+30|        val newTheme = db.getTheme()
+31|        if (newTheme != currentTheme) {
+32|            currentTheme = newTheme
+33|            recreate()
+34|        }
+35|    }
+36|
+37|    // 只在设置页面修改通知设置后重新调度通知
+38|    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+39|        super.onActivityResult(requestCode, resultCode, data)
+40|        if (requestCode == SETTINGS_REQUEST_CODE && resultCode == RESULT_OK) {
+41|            val notificationChanged = data?.getBooleanExtra("NOTIFICATION_CHANGED", false) ?: false
+42|            if (notificationChanged) {
+43|                isNotificationScheduled = false
+44|                checkAndScheduleNotification()
+45|            }
+46|        }
+47|    }
+48|
+49|    private fun setupBottomNavigation() {
+50|        findViewById<BottomNavigationView>(R.id.bottomNavigation).apply {
+51|            selectedItemId = R.id.navigation_home
+52|            
+53|            setOnItemSelectedListener { item ->
+54|                when (item.itemId) {
+55|                    R.id.navigation_home -> true
+56|                    R.id.navigation_history -> {
+57|                        startActivity(
+58|                            Intent(this@MainActivity, HistoryActivity::class.java),
+59|                            ActivityOptions.makeCustomAnimation(
+60|                                this@MainActivity,
+61|                                android.R.anim.fade_in,
+62|                                android.R.anim.fade_out
+63|                            ).toBundle()
+64|                        )
+65|                        false
+66|                    }
+67|                    R.id.navigation_settings -> {
+68|                        // 使用 startActivityForResult 启动设置页面
+69|                        startActivityForResult(
+70|                            Intent(this@MainActivity, SettingsActivity::class.java),
+71|                            SETTINGS_REQUEST_CODE,
+72|                            ActivityOptions.makeCustomAnimation(
+73|                                this@MainActivity,
+74|                                android.R.anim.fade_in,
+75|                                android.R.anim.fade_out
+76|                            ).toBundle()
+77|                        )
+78|                        false
+79|                    }
+80|                    else -> false
+81|                }
+82|            }
+83|        }
+84|    }
+85|
+86|    private fun setupViews() {
+87|        val submitButton = findViewById<Button>(R.id.submitButton)
+88|        val noteEditText = findViewById<EditText>(R.id.noteEditText)
+89|        val moodCategoryGroup = findViewById<RadioGroup>(R.id.moodCategoryGroup)
+90|        
+91|        // 默认选中积极按钮
+92|        moodCategoryGroup.check(R.id.positiveMoodRadio)
+93|        moodOptionsAdapter.updateCategory(MoodOptionsAdapter.MoodCategory.POSITIVE)
+94|        
+95|        moodCategoryGroup.setOnCheckedChangeListener { _, checkedId ->
+96|            val category = when (checkedId) {
+97|                R.id.positiveMoodRadio -> MoodOptionsAdapter.MoodCategory.POSITIVE
+98|                R.id.neutralMoodRadio -> MoodOptionsAdapter.MoodCategory.NEUTRAL
+99|                R.id.negativeMoodRadio -> MoodOptionsAdapter.MoodCategory.NEGATIVE
+100|                else -> null
+101|            }
+102|            category?.let { moodOptionsAdapter.updateCategory(it) }
+103|        }
+104|
+105|        // ... 其他代码 ...
+106|    }
+107|} 

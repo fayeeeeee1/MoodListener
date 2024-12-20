@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 卡片样式 -->
+    <style name="SettingsCard" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="contentPadding">16dp</item>
+    </style>
+
+    <!-- 标题文本样式 -->
+    <style name="SettingsCardTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- 子标题文本样式 -->
+    <style name="SettingsCardSubtitle" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+</resources> 

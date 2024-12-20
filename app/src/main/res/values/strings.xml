@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">心情记录器</string>
+    <string name="default_notification_text">现在是时候记录一下你的心情了！</string>
+</resources>

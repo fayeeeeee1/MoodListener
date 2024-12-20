@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <color name="accent_pink">#FF4081</color>
+    
+    <color name="accent_blue">#448AFF</color>
+    
+    <color name="accent_orange">#FF9800</color>
+
+    <!-- 蓝色主题颜色 -->
+    <color name="blue_200">#90CAF9</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_700">#1976D2</color>
+
+    <!-- 粉色主题颜色 -->
+    <color name="pink_200">#F48FB1</color>
+    <color name="pink_500">#E91E63</color>
+    <color name="pink_700">#C2185B</color>
+
+    <!-- 绿色主题颜色 -->
+    <color name="green_200">#A5D6A7</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="green_700">#388E3C</color>
+
+    <!-- 心情相关颜色 -->
+    <color name="mood_happy">#FFD700</color>
+    <color name="mood_excited">#FF6B6B</color>
+    <color name="mood_satisfied">#98FB98</color>
+    <color name="mood_grateful">#FF69B4</color>
+    <color name="mood_confident">#87CEEB</color>
+    
+    <color name="mood_calm">#E6E6FA</color>
+    <color name="mood_bored">#D3D3D3</color>
+    <color name="mood_normal">#F5F5F5</color>
+    
+    <color name="mood_sad">#6495ED</color>
+    <color name="mood_anxious">#DDA0DD</color>
+    <color name="mood_angry">#FF4500</color>
+    <color name="mood_tired">#778899</color>
+    <color name="mood_disappointed">#B8860B</color>
+
+    <!-- 基础颜色 -->
+    <color name="primary_blue">#2196F3</color>
+    <color name="primary_dark_blue">#1976D2</color>
+    <color name="primary_pink">#E91E63</color>
+    <color name="primary_dark_pink">#C2185B</color>
+    <color name="primary_green">#4CAF50</color>
+    <color name="primary_dark_green">#388E3C</color>
+    
+    <!-- 背景颜色 -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
+    
+    <!-- 文字颜色 -->
+    <color name="text_light">#000000</color>
+    <color name="text_dark">#FFFFFF</color>
+    
+    <!-- 心情类别颜色 -->
+    <color name="mood_positive">#4CAF50</color>
+    <color name="mood_neutral">#9E9E9E</color>
+    <color name="mood_negative">#F44336</color>
+</resources>

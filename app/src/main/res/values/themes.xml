@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基础主题 -->
+    <style name="Theme.MoodListener" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 通用属性 -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <!-- 蓝色主题 -->
+    <style name="Theme.MoodListener.Blue" parent="Theme.MoodListener">
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_blue</item>
+        <item name="colorSecondary">@color/primary_blue</item>
+        <item name="colorSecondaryVariant">@color/primary_dark_blue</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:textColor">@color/text_light</item>
+    </style>
+
+    <!-- 粉色主题 -->
+    <style name="Theme.MoodListener.Pink" parent="Theme.MoodListener">
+        <item name="colorPrimary">@color/primary_pink</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_pink</item>
+        <item name="colorSecondary">@color/primary_pink</item>
+        <item name="colorSecondaryVariant">@color/primary_dark_pink</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:textColor">@color/text_light</item>
+    </style>
+
+    <!-- 绿色主题 -->
+    <style name="Theme.MoodListener.Green" parent="Theme.MoodListener">
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_green</item>
+        <item name="colorSecondary">@color/primary_green</item>
+        <item name="colorSecondaryVariant">@color/primary_dark_green</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:textColor">@color/text_light</item>
+    </style>
+
+    <!-- 灰色主题 -->
+    <style name="Theme.MoodListener.Gray" parent="Theme.MoodListener">
+        <item name="colorPrimary">#607D8B</item>
+        <item name="colorPrimaryVariant">#455A64</item>
+        <item name="colorSecondary">#78909C</item>
+        <item name="colorSecondaryVariant">#546E7A</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>
